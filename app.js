@@ -1,9 +1,10 @@
 var express = require("express");
 var path = require("path");
 var mongoose = require('mongoose');
+var config = require("./config/database");
 
 // Connection syntax
-mongoose.connect('mongodb://localhost/toko-online');
+mongoose.connect(config.database);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'))
 db.once('open', function(){
