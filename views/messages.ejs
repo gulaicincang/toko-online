@@ -1,0 +1,15 @@
+
+<div id="messages">
+<% Object.keys(messages).forEach(function (type) { %>
+// dipanggil di header kalau salah
+// div awalnya ul
+// alert alert-contohnyawarning gitu kek
+  <div class="alert alert-<%= type %>"> 
+  <% messages[type].forEach(function (message) { %>
+    <li><%= message %></li>
+  <% }) %>
+  </div>
+<% }) %>
+</div>
+
+<% include _layouts/footer %>
