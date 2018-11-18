@@ -23,7 +23,11 @@ app.set("view engine","ejs");
 app.use(express.static(path.join(__dirname,"public")));
 
 // Set Routes
-var pages = require('./routes/pages.js')
+var pages = require('./routes/pages.js');
+
+// Redirect
+
+app.use("/", pages);
 
 //setup server
 var port = 8000;
