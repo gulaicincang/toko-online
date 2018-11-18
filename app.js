@@ -24,10 +24,11 @@ app.use(express.static(path.join(__dirname,"public")));
 
 // Set Routes
 var pages = require('./routes/pages.js');
+var adminPages = require('./routes/admin_pages.js');
 
 // Redirect
-
 app.use("/", pages);
+app.use('/admin/pages', adminPages);
 
 //setup server
 var port = 8000;
