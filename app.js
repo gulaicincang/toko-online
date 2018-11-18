@@ -13,12 +13,11 @@ app.set("view engine","ejs");
 //setup public folder
 app.use(express.static(path.join(__dirname,"public")));
 
-//setup index
-app.get('/',function(req, res){
-  res.render("index", {
-    title: "Happy Shopping"
-  })
-});
+//setting routes
+var pages = require('./routes/pages.js');
+
+//redirect
+app.use('/', pages);
 
 //setup server
 var port = 8000;
