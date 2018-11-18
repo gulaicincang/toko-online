@@ -5,11 +5,13 @@ var config = require("./config/database");
 var bodyParser = require("body-parser");
 var session = require("express-session");
 var expressValidator = require("express-validator");
+var expressMessages = require('express-messages');
+var connectFlash = require('connect-flash');
 
 // Connection syntax
 mongoose.connect(config.database);
 var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error'))
+db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', function(){
   console.log('Connected to MongoDB');
 });
@@ -82,6 +84,14 @@ app.use(
     }
   })
 );
+
+
+//setup express messages middleware
+app.use(require("connect-flash")());
+app.use(function(req, res, next) {
+  res.locals.messages = require("express-messages")(req, res);
+  next();
+});
 
 
 
